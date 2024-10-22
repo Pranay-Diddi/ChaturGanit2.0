@@ -79,21 +79,20 @@ function calculateSGPA() {
     const numberOfSubjects = parseInt(document.getElementById('subjectCount').value);
     let totalGradeSum = 0, totalCreditsSum = 0;
 
-    let hasError = false; // To track if there's an error
+    let hasError = false; 
 
-    // Loop through each subject to calculate total credits and grade
     for (let i = 0; i < numberOfSubjects; i++) {
         const creditInput = document.getElementById(`inputSubject${i + 1}`);
-        const credit = parseInt(creditInput.value);
+        const credit = parseFloat(creditInput.value); 
         const grade = document.getElementById(`dropdownButton${i + 1}`).textContent;
 
         if (creditInput.value === '' || isNaN(credit) || credit <= 0) {
             creditInput.setCustomValidity('Please enter a valid credit.');
-            creditInput.reportValidity(); // Display the error
+            creditInput.reportValidity(); 
             hasError = true;
             break;
         } else {
-            creditInput.setCustomValidity(''); // Clear error if valid
+            creditInput.setCustomValidity(''); 
         }
 
         if (!gradeMap.hasOwnProperty(grade)) {
